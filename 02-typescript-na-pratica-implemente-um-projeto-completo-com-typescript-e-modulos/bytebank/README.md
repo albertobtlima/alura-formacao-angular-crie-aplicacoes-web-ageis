@@ -1,4 +1,5 @@
 // Tipos primitivos
+
 '''
 let valor: number = 3000;
 let nome: string = "";
@@ -9,21 +10,25 @@ let qualquer: any = "";
 qualquer = 22;
 
 // Arrays
+
 '''
 const lista: number[] = [];
 lista.push(22, 2, 4, 6);
 '''
 
 // Tipos personalizados (Type Alias)
+
 '''
 type Transacao = {
    tipoTransacao: TipoTransacao;
    data: Date;
    valor: number;
 };
+
 '''
 
 // Enum
+
 '''
 enum TipoTransacao {
    DEPOSITO = "Depósito",
