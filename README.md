@@ -5,7 +5,9 @@
 * Podcast: 1
 * Artigos: 3
 
-## Cursos:
+---
+
+**Cursos:**
 
 * HTML e CSS: ambientes de desenvolvimento, estrutura de arquivos e tags
 * HTML e CSS: classes, posicionamento e flexbox
