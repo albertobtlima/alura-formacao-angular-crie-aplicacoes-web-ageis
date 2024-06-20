@@ -1,4 +1,4 @@
-// Tipos primitivos
+/* // Tipos primitivos
 let valor: number = 3000;
 let nome: string = "";
 let isPago: boolean = false;
@@ -28,4 +28,4 @@ const novaTransacao: Transacao = {
    tipoTransacao: TipoTransacao.DEPOSITO,
    data: new Date(),
    valor: 0,
-};
+}; */
