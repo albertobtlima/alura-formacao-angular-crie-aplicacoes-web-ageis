@@ -1,4 +1,4 @@
-// Tipos primitivos
+**Tipos primitivos**
 
 ```
 let valor: number = 3000;
@@ -9,14 +9,14 @@ let qualquer: any = "";
 
 qualquer = 22;
 
-// Arrays
+**Arrays**
 
 ```
 const lista: number[] = [];
 lista.push(22, 2, 4, 6);
 ```
 
-// Tipos personalizados (Type Alias)
+**Tipos personalizados (Type Alias)**
 
 ```
 type Transacao = {
@@ -27,7 +27,7 @@ type Transacao = {
 
 ```
 
-// Enum
+**Enum**
 
 ```
 enum TipoTransacao {
