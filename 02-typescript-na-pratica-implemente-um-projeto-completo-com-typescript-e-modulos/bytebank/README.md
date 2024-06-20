@@ -7,8 +7,6 @@ let isPago: boolean = false;
 let qualquer: any = "";
 ```
 
-qualquer = 22;
-
 **Arrays**
 
 ```
