@@ -1,4 +1,4 @@
-# Formação Angular: crie aplicações web ágeis
+# Alura - Formação Angular: crie aplicações web ágeis
 
 * Carga horária: 85
 * Cursos: 10
