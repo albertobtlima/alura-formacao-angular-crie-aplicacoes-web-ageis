@@ -1,8 +1,8 @@
-import { TipoTransacao } from "./TipoTransacao.js";
+import { TipoTransacao } from "./TipoTransacao";
 export class Conta {
     nome;
     saldo = JSON.parse(localStorage.getItem("saldo")) || 0;
-    transacao = JSON.parse(localStorage.getItem("transacoes"), (key, value) => {
+    transacoes = JSON.parse(localStorage.getItem("transacoes"), (key, value) => {
         if (key === "data") {
             return new Date(value);
         }
@@ -13,7 +13,7 @@ export class Conta {
     }
     getGruposTransacoes() {
         const gruposTransacoes = [];
-        const listaTransacoes = structuredClone(this.transacao);
+        const listaTransacoes = structuredClone(this.transacoes);
         const transacoesOrdenadas = listaTransacoes.sort((t1, t2) => t2.data.getTime() - t1.data.getTime());
         let labelAtualGrupoTransacao = "";
         for (let transacao of transacoesOrdenadas) {
@@ -50,9 +50,9 @@ export class Conta {
         else {
             throw new Error("Tipo de Transação é inválido!");
         }
-        this.transacao.push(novaTransacao);
+        this.transacoes.push(novaTransacao);
         console.log(this.getGruposTransacoes());
-        localStorage.setItem("transacoes", JSON.stringify(this.transacao));
+        localStorage.setItem("transacoes", JSON.stringify(this.transacoes));
     }
     debitar(valor) {
         if (valor <= 0) {
@@ -72,5 +72,5 @@ export class Conta {
         localStorage.setItem("saldo", this.saldo.toString());
     }
 }
-const conta = new Conta("Joana da Silva Oliveira");
+const conta = new Conta("Joana da Silva Olveira");
 export default conta;

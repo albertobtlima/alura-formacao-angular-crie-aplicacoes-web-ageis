@@ -1,15 +1,16 @@
-import { GrupoTransacao } from "./GrupoTransacao.js";
-import { TipoTransacao } from "./TipoTransacao.js";
-import { Transacao } from "./Transacao.js";
+import { GrupoTransacao } from "./GrupoTransacao";
+import { TipoTransacao } from "./TipoTransacao";
+import { Transacao } from "./Transacao";
 
 export class Conta {
    nome: string;
    saldo: number = JSON.parse(localStorage.getItem("saldo")) || 0;
-   transacao: Transacao[] =
+   transacoes: Transacao[] =
       JSON.parse(localStorage.getItem("transacoes"), (key: string, value: any) => {
          if (key === "data") {
             return new Date(value);
          }
+         
          return value;
       }) || [];
 
@@ -19,7 +20,7 @@ export class Conta {
 
    getGruposTransacoes(): GrupoTransacao[] {
       const gruposTransacoes: GrupoTransacao[] = [];
-      const listaTransacoes: Transacao[] = structuredClone(this.transacao);
+      const listaTransacoes: Transacao[] = structuredClone(this.transacoes);
       const transacoesOrdenadas: Transacao[] = listaTransacoes.sort((t1, t2) => t2.data.getTime() - t1.data.getTime());
       let labelAtualGrupoTransacao: string = "";
 
@@ -36,6 +37,7 @@ export class Conta {
                transacoes: [],
             });
          }
+
          gruposTransacoes.at(-1).transacoes.push(transacao);
       }
 
@@ -63,9 +65,9 @@ export class Conta {
          throw new Error("Tipo de Transação é inválido!");
       }
 
-      this.transacao.push(novaTransacao);
+      this.transacoes.push(novaTransacao);
       console.log(this.getGruposTransacoes());
-      localStorage.setItem("transacoes", JSON.stringify(this.transacao));
+      localStorage.setItem("transacoes", JSON.stringify(this.transacoes));
    }
 
    debitar(valor: number): void {
@@ -90,6 +92,6 @@ export class Conta {
    }
 }
 
-const conta = new Conta("Joana da Silva Oliveira");
+const conta = new Conta("Joana da Silva Olveira");
 
 export default conta;
