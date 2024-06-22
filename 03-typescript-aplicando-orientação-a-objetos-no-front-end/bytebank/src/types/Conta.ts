@@ -1,21 +1,25 @@
-import { GrupoTransacao } from "./GrupoTransacao";
-import { TipoTransacao } from "./TipoTransacao";
-import { Transacao } from "./Transacao";
+import { GrupoTransacao } from "./GrupoTransacao.js";
+import { TipoTransacao } from "./TipoTransacao.js";
+import { Transacao } from "./Transacao.js";
 
 export class Conta {
-   nome: string;
-   saldo: number = JSON.parse(localStorage.getItem("saldo")) || 0;
-   transacoes: Transacao[] =
+   protected nome: string;
+   protected saldo: number = JSON.parse(localStorage.getItem("saldo")) || 0;
+   private transacoes: Transacao[] =
       JSON.parse(localStorage.getItem("transacoes"), (key: string, value: any) => {
          if (key === "data") {
             return new Date(value);
          }
-         
+
          return value;
       }) || [];
 
    constructor(nome: string) {
       this.nome = nome;
+   }
+
+   public getTitular() {
+      return this.nome;
    }
 
    getGruposTransacoes(): GrupoTransacao[] {
@@ -52,7 +56,7 @@ export class Conta {
       return new Date();
    }
 
-   registrarTransacao(novaTransacao: Transacao): void {
+   public registrarTransacao(novaTransacao: Transacao): void {
       if (novaTransacao.tipoTransacao == TipoTransacao.DEPOSITO) {
          this.depositar(novaTransacao.valor);
       } else if (
@@ -70,7 +74,7 @@ export class Conta {
       localStorage.setItem("transacoes", JSON.stringify(this.transacoes));
    }
 
-   debitar(valor: number): void {
+   private debitar(valor: number): void {
       if (valor <= 0) {
          throw new Error("O valor a ser debitado deve ser maior que zero!");
       }
@@ -82,7 +86,7 @@ export class Conta {
       localStorage.setItem("saldo", this.saldo.toString());
    }
 
-   depositar(valor: number): void {
+   private depositar(valor: number): void {
       if (valor <= 0) {
          throw new Error("O valor a ser depositado deve ser maior que zero!");
       }
