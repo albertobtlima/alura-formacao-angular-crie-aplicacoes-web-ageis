@@ -13,6 +13,7 @@ interface Contato {
 }
 
 import agenda from './agenda.json';
+import { FormsModule } from '@angular/forms';
 
 @Component({
 	selector: 'app-root',
@@ -24,14 +25,16 @@ import agenda from './agenda.json';
 		CabecalhoComponent,
 		SeparadorComponent,
 		ContatoComponent,
+		FormsModule,
 	],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.css',
 })
-
 export class AppComponent {
 	alfabeto: string = 'abcdefghijklmnopqrstuvwxyz';
 	contatos: Contato[] = agenda;
+
+	filtroPorTexto: string = '';
 
 	filtrarContatosPorLetraInicial(letra: string): Contato[] {
 		return this.contatos.filter((contato) => {
