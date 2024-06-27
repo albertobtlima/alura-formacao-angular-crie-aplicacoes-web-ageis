@@ -21,7 +21,7 @@ export class FormularioContatoComponent {
 
 	constructor() {
 		this.contatoForm = new FormGroup({
-			nome: new FormControl(''),
+			nome: new FormControl('Beto'),
 			telefone: new FormControl(''),
 			email: new FormControl(''),
 			aniversario: new FormControl(''),
