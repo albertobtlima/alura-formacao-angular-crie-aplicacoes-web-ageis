@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ContainerComponent } from '../../componentes/container/container.component';
 import { SeparadorComponent } from '../../componentes/separador/separador.component';
@@ -20,15 +15,19 @@ import { ContatoService } from '../../services/contato.service';
     ContainerComponent,
     SeparadorComponent,
     ReactiveFormsModule,
-    RouterLink,
+    RouterLink
   ],
   templateUrl: './formulario-contato.component.html',
-  styleUrl: './formulario-contato.component.css',
+  styleUrl: './formulario-contato.component.css'
 })
-export class FormularioContatoComponent implements OnInit {
+export class FormularioContatoComponent implements OnInit{
+
   contatoForm!: FormGroup;
 
-  constructor(private contatoService: ContatoService, private router: Router) {}
+  constructor(
+    private contatoService: ContatoService,
+    private router: Router
+    ) {}
 
   ngOnInit() {
     this.inicializarFormulario();
@@ -41,15 +40,15 @@ export class FormularioContatoComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       aniversario: new FormControl(''),
       redes: new FormControl(''),
-      observacoes: new FormControl(''),
-    });
+      observacoes: new FormControl('')
+    })
   }
 
   salvarContato() {
     const novoContato = this.contatoForm.value;
     this.contatoService.salvarContato(novoContato);
     this.contatoForm.reset();
-    this.router.navigateByUrl('/lista-contatos');
+    this.router.navigateByUrl('/lista-contatos')
   }
 
   cancelar() {
