@@ -1,4 +1,3 @@
-
 ![Descricao da sua imagem](./thumbnail.png)
 
 # Indexa
@@ -41,4 +40,4 @@ Depois, para executar o projeto em modo desenvolvimento:
 ng serve
 ```
 
-Depois, acesse [http://localhost:4200/](url) no seu navegador. 
+Depois, acesse [http://localhost:4200/](url) no seu navegador.
